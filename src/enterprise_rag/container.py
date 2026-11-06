@@ -18,6 +18,7 @@ from enterprise_rag.ingestion.embedder import Embedder, OllamaEmbedder
 from enterprise_rag.ingestion.loaders import default_loader
 from enterprise_rag.ingestion.pipeline import IngestPipeline
 from enterprise_rag.retrieval.hybrid import HybridRetriever
+from enterprise_rag.retrieval.reranker import CrossEncoderReranker, NoopReranker, Reranker
 from enterprise_rag.retrieval.sql_retrievers import KeywordRetriever, VectorRetriever
 
 
@@ -31,6 +32,7 @@ class Container:
     vector: VectorRetriever
     keyword: KeywordRetriever
     hybrid: HybridRetriever
+    reranker: Reranker
     ingest: IngestPipeline
 
     @classmethod
@@ -59,8 +61,13 @@ class Container:
         chunker = RecursiveChunker(
             TiktokenTokenizer(), settings.chunk_size_tokens, settings.chunk_overlap_tokens
         )
+        reranker: Reranker = (
+            CrossEncoderReranker(settings.rerank_model, device=settings.rerank_device)
+            if settings.rerank_enabled
+            else NoopReranker()
+        )
         ingest = IngestPipeline(sf, default_loader(), chunker, embedder)
-        return cls(settings, engine, sf, http, embedder, vector, keyword, hybrid, ingest)
+        return cls(settings, engine, sf, http, embedder, vector, keyword, hybrid, reranker, ingest)
 
     async def aclose(self) -> None:
         await self.http.aclose()

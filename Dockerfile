@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends curl \
 
 WORKDIR /app
 # CPU-only torch keeps the image ~1.5GB smaller than the default CUDA wheel.
-RUN uv pip install --index-url https://download.pytorch.org/whl/cpu torch==2.4.1
+RUN uv pip install --index-url https://download.pytorch.org/whl/cpu torch==2.6.0
 COPY pyproject.toml README.md ./
 COPY src ./src
 RUN uv pip install ".[rerank]"

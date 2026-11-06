@@ -47,6 +47,7 @@ class Settings(BaseSettings):
     hnsw_ef_search: int = 64
     rerank_enabled: bool = True
     rerank_model: str = "cross-encoder/ms-marco-MiniLM-L-6-v2"
+    rerank_device: str | None = None  # None = auto (cuda > mps > cpu)
     # Below this cross-encoder logit for the best chunk we refuse without calling the LLM.
     min_rerank_score: float = -6.0
 
