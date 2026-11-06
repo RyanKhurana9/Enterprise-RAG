@@ -20,6 +20,7 @@ dependencies = [
     "tiktoken>=0.7",
     "prometheus-client>=0.20",
     "faker>=26.0",
+    "numpy>=1.26",
 ]
 
 [project.optional-dependencies]

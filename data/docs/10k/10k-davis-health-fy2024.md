@@ -1,0 +1,42 @@
+# Davis Health - Form 10-K Extract (Fiscal 2024)
+
+## Item 1. Business
+Davis Health is a healthcare company operating through three reportable segments: Medical Devices,
+Diagnostics and Pharmacy Services. Our principal executive offices are located in Pittsburgh, Pennsylvania. As of the end of fiscal 2024, we employed approximately 17,294 people worldwide. We sell to customers in more
+than 111 countries and our strategy emphasises disciplined capital
+allocation, operational excellence and organic growth.
+
+## Item 1A. Risk Factors
+- Changes in interest rates could adversely affect our net interest margin and the fair value of our fixed-income investment portfolio. Insurance coverage may not be sufficient to cover all losses arising from these risks. We monitor this exposure through our enterprise risk management framework and report it to the Audit Committee each quarter.
+- Climate-related regulation and physical risks may increase our operating costs. We monitor this exposure through our enterprise risk management framework and report it to the Audit Committee each quarter. Regulators in several jurisdictions have increased their scrutiny of this area, which could raise our compliance costs.
+- We depend on third-party cloud providers; a prolonged outage could disrupt operations and damage customer relationships. The occurrence of any of these events could have a material adverse effect on our business, financial condition and results of operations. Regulators in several jurisdictions have increased their scrutiny of this area, which could raise our compliance costs.
+- Cybersecurity incidents could result in the loss of confidential data, regulatory penalties and reputational harm. The occurrence of any of these events could have a material adverse effect on our business, financial condition and results of operations. Although we maintain mitigation plans, there can be no assurance that these measures will be effective in all circumstances.
+- Our international operations expose us to foreign-exchange volatility, sanctions regimes and differing tax laws. We monitor this exposure through our enterprise risk management framework and report it to the Audit Committee each quarter. The occurrence of any of these events could have a material adverse effect on our business, financial condition and results of operations.
+- Litigation and regulatory investigations could result in significant fines or restrictions on our business. We monitor this exposure through our enterprise risk management framework and report it to the Audit Committee each quarter. Although we maintain mitigation plans, there can be no assurance that these measures will be effective in all circumstances.
+- Our indebtedness could limit our flexibility in planning for or reacting to changes in our business. The occurrence of any of these events could have a material adverse effect on our business, financial condition and results of operations. Although we maintain mitigation plans, there can be no assurance that these measures will be effective in all circumstances.
+
+## Item 2. Properties
+We own or lease manufacturing, distribution, research and office facilities in North America, Europe and Asia. We believe our facilities are suitable and adequate for our current needs and that additional space can be obtained on commercially reasonable terms if required.
+
+## Item 3. Legal Proceedings
+From time to time we are party to litigation, claims and regulatory proceedings arising in the ordinary course of business. While the outcome of these matters is inherently uncertain, management does not currently expect them to have a material adverse effect on our consolidated financial position.
+
+## Item 7A. Quantitative and Qualitative Disclosures About Market Risk
+We are exposed to market risks from changes in interest rates, foreign-currency exchange rates and commodity prices. We use derivative instruments, principally interest-rate swaps and foreign-currency forwards, to manage these exposures, and we do not enter into derivatives for speculative purposes. A hypothetical 100 basis point increase in interest rates would not have a material effect on our interest expense given the predominantly fixed-rate nature of our borrowings.
+
+## Item 7. Management's Discussion and Analysis
+Total revenue for fiscal 2024 was $35,839 million, an increase of 0.9 percent compared with the prior year. Operating margin was 21.2 percent and net income was
+$4,584 million. The Medical Devices segment was our largest, contributing $14,665 million of revenue.
+
+Segment revenue:
+- Medical Devices: $14,665 million
+- Diagnostics: $13,866 million
+- Pharmacy Services: $7,308 million
+
+Results reflected cost discipline partly offset by
+elevated wage inflation.
+
+## Liquidity and Capital Resources
+Long-term debt totalled $25,711 million, and cash and cash equivalents were $6,619 million. Capital expenditures were $3,073 million, primarily for capacity expansion and technology infrastructure. The Board declared total dividends of $0.48 per share and authorised a $1,372 million share repurchase programme. We believe
+existing cash, operating cash flow and our revolving credit facility will be sufficient to
+fund operations for at least the next twelve months.

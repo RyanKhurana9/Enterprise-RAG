@@ -36,6 +36,23 @@ from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 EMBED_DIM = 768
 
 
+class BinaryVector(Vector):
+    """pgvector column whose values go straight to the asyncpg binary codec.
+
+    The stock type renders vectors as '[0.1,0.2,...]' text in Python; with
+    ``pgvector.asyncpg.register_vector`` on each connection (see db/engine.py) we can hand
+    numpy arrays to the driver directly, which is smaller on the wire and cheaper to parse.
+    """
+
+    cache_ok = True
+
+    def bind_processor(self, dialect: Any) -> None:
+        return None
+
+    def result_processor(self, dialect: Any, coltype: Any) -> None:
+        return None
+
+
 class Base(DeclarativeBase):
     pass
 
@@ -116,7 +133,7 @@ class Chunk(Base):
     content: Mapped[str] = mapped_column(Text)
     token_count: Mapped[int] = mapped_column(Integer)
     content_hash: Mapped[str] = mapped_column(String(64))
-    embedding: Mapped[list[float]] = mapped_column(Vector(EMBED_DIM))
+    embedding: Mapped[list[float]] = mapped_column(BinaryVector(EMBED_DIM))
     tsv: Mapped[Any] = mapped_column(
         TSVECTOR, Computed("to_tsvector('english', content)", persisted=True)
     )
@@ -131,6 +148,7 @@ class Chunk(Base):
             postgresql_ops={"embedding": "vector_cosine_ops"},
         ),
         Index("ix_chunks_tsv_gin", "tsv", postgresql_using="gin"),
+        Index("ix_chunks_content_hash", "content_hash"),
     )
 
 
@@ -140,7 +158,7 @@ class SemanticCacheEntry(Base):
     id: Mapped[int] = mapped_column(BigInteger, primary_key=True, autoincrement=True)
     query_text: Mapped[str] = mapped_column(Text)
     query_hash: Mapped[str] = mapped_column(String(64), unique=True)
-    embedding: Mapped[list[float]] = mapped_column(Vector(EMBED_DIM))
+    embedding: Mapped[list[float]] = mapped_column(BinaryVector(EMBED_DIM))
     response: Mapped[dict[str, Any]] = mapped_column(JSONB)
     hit_count: Mapped[int] = mapped_column(Integer, server_default="0")
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
