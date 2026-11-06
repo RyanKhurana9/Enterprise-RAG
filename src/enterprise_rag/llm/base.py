@@ -17,10 +17,16 @@ class Message:
 
 class LLM(ABC):
     @abstractmethod
-    async def chat(self, messages: list[Message], *, json_mode: bool = False) -> str:
+    async def chat(
+        self, messages: list[Message], *, json_mode: bool = False, max_tokens: int | None = None
+    ) -> str:
         """Return the assistant's reply. ``json_mode`` asks for a JSON object."""
 
-    async def complete(self, system: str, user: str, *, json_mode: bool = False) -> str:
+    async def complete(
+        self, system: str, user: str, *, json_mode: bool = False, max_tokens: int | None = None
+    ) -> str:
         return await self.chat(
-            [Message("system", system), Message("user", user)], json_mode=json_mode
+            [Message("system", system), Message("user", user)],
+            json_mode=json_mode,
+            max_tokens=max_tokens,
         )

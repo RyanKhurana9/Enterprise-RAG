@@ -6,6 +6,7 @@ Env vars use the ``RAG_`` prefix, e.g. ``RAG_SEMANTIC_CACHE_THRESHOLD=0.95``.
 from __future__ import annotations
 
 from functools import lru_cache
+from typing import Literal
 
 from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -58,7 +59,9 @@ class Settings(BaseSettings):
     sql_repair_attempts: int = 1
 
     # --- Routing --------------------------------------------------------------------------
-    router_use_llm: bool = True
+    # llm = LLM classifier with heuristic fallback; cascade = heuristic unless ambiguous
+    router_mode: Literal["llm", "heuristic", "cascade"] = "llm"
+    router_cascade_margin: float = 3.0
 
     # --- Cache ----------------------------------------------------------------------------
     cache_enabled: bool = True

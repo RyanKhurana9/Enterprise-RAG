@@ -25,15 +25,25 @@ class OllamaLLM(LLM):
     ) -> None:
         self._client = client
         self.model = model
-        self._options = {"temperature": temperature, "num_ctx": num_ctx, "seed": 0}
+        self._options: dict[str, Any] = {
+            "temperature": temperature,
+            "num_ctx": num_ctx,
+            "seed": 0,
+        }
         self._keep_alive = keep_alive
 
-    async def chat(self, messages: list[Message], *, json_mode: bool = False) -> str:
+    async def chat(
+        self, messages: list[Message], *, json_mode: bool = False, max_tokens: int | None = None
+    ) -> str:
+        # num_ctx must be identical on every call: changing it makes Ollama reload the model.
+        options: dict[str, Any] = dict(self._options)
+        if max_tokens is not None:
+            options["num_predict"] = max_tokens
         payload: dict[str, Any] = {
             "model": self.model,
             "messages": [{"role": m.role, "content": m.content} for m in messages],
             "stream": False,
-            "options": self._options,
+            "options": options,
             "keep_alive": self._keep_alive,
         }
         if json_mode:
