@@ -25,6 +25,7 @@ dependencies = [
 
 [project.optional-dependencies]
 rerank = ["sentence-transformers>=3.0,<7"]
+ui = ["streamlit>=1.45", "pandas>=2.2"]
 dev = [
     "pytest>=8.2",
     "pytest-asyncio>=0.23",
@@ -34,7 +35,6 @@ dev = [
     "testcontainers[postgres]>=4.7",
     "fakeredis>=2.23",
     "fpdf2>=2.7",
-    "types-redis",
 ]
 
 [build-system]
@@ -47,7 +47,7 @@ packages = ["src/enterprise_rag"]
 [tool.ruff]
 line-length = 100
 target-version = "py311"
-src = ["src", "tests", "scripts"]
+src = ["src", "tests", "scripts", "ui"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "UP", "SIM", "RUF", "ASYNC"]
@@ -61,7 +61,7 @@ packages = ["enterprise_rag"]
 plugins = ["pydantic.mypy"]
 
 [[tool.mypy.overrides]]
-module = ["pgvector.*", "sentence_transformers.*", "testcontainers.*", "fakeredis.*", "fpdf.*", "faker.*", "tiktoken.*", "pypdf.*"]
+module = ["pgvector.*", "sentence_transformers.*", "torch.*", "testcontainers.*", "fakeredis.*", "fpdf.*", "faker.*", "tiktoken.*", "pypdf.*"]
 ignore_missing_imports = true
 
 [tool.pytest.ini_options]

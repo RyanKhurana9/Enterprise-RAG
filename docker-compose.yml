@@ -72,6 +72,21 @@ services:
       timeout: 5s
       retries: 12
 
+  ui:
+    build:
+      context: .
+      dockerfile: ui/Dockerfile
+    environment:
+      RAG_API_URL: http://api:8000
+    ports: ["8501:8501"]
+    depends_on:
+      api: { condition: service_started }
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8501/_stcore/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+
 volumes:
   pgdata:
   ollama:
